@@ -8,8 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.demo.repository.modelo.Hotel;
-import com.uce.edu.demo.service.IHotelService;
+import com.uce.edu.demo.factura.repository.modelo.Factura;
+import com.uce.edu.demo.factura.service.IFacturaService;
 
 @SpringBootApplication
 public class ProyectoU3DvApplication implements CommandLineRunner{
@@ -17,7 +17,7 @@ public class ProyectoU3DvApplication implements CommandLineRunner{
 	private static final Logger LOG = Logger.getLogger(ProyectoU3DvApplication.class);
 	
 	@Autowired
-	private IHotelService iHotelService;
+	private IFacturaService iFacturaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU3DvApplication.class, args);
@@ -28,33 +28,33 @@ public class ProyectoU3DvApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		
 		LOG.info("INNER JOIN");
-		List<Hotel> listaHoteles=this.iHotelService.buscarHotelInnerJoin("Familiar");
-		for(Hotel h: listaHoteles) {
-			LOG.info("Hotel Familiar: "+h.getNombre()+" "+h.getDireccion());
+		List<Factura> listaF=this.iFacturaService.buscarFacturaInnerJoin("Descuento");
+		for(Factura f: listaF) {
+			LOG.info("Factura Descuento: "+f.getNumero());
 		}
 		
 		LOG.info("INNER JOIN 2");
-		List<Hotel> listaHoteles2=this.iHotelService.buscarHotelInnerJoin();
-		for(Hotel h: listaHoteles2) {
-			LOG.info("Hotel: "+h.getNombre()+" "+h.getDireccion());
+		List<Factura> listaF2=this.iFacturaService.buscarFacturaInnerJoin();
+		for(Factura f: listaF2) {
+			LOG.info("Factura: "+f.getNumero());
 		}
 		
 		LOG.info("LEFT JOIN");
-		List<Hotel> listaHotelesLeft=this.iHotelService.buscarHotelOuterLeftJoin("Individual");
-		for(Hotel h: listaHotelesLeft) {
-			LOG.info("Hotel Individual: "+h.getNombre()+" "+h.getDireccion());
+		List<Factura> listaFL=this.iFacturaService.buscarFacturaOuterLeftJoin("Sin Descuento");
+		for(Factura f: listaFL) {
+			LOG.info("Factura Sin Descuento: "+f.getNumero());
 		}
 		
 		LOG.info("LEFT JOIN 2");
-		List<Hotel> listaHotelesLeft2=this.iHotelService.buscarHotelOuterLeftJoin();
-		for(Hotel h: listaHotelesLeft2) {
-			LOG.info("Hotel: "+h.getNombre()+" "+h.getDireccion());
+		List<Factura> listaFL2=this.iFacturaService.buscarFacturaOuterLeftJoin();
+		for(Factura f: listaFL2) {
+			LOG.info("Factura: "+f.getNumero());
 		}
 		
 		LOG.info("RIGHT JOIN");
-		List<Hotel> listaHotelesRight=this.iHotelService.buscarHotelOuterRightJoin("Familiar");
-		for(Hotel h: listaHotelesRight) {
-			LOG.info("Hotel Familiar: "+h.getNombre()+" "+h.getDireccion());
+		List<Factura> listaFR=this.iFacturaService.buscarFacturaOuterRightJoin("Descuento");
+		for(Factura f: listaFR) {
+			LOG.info("Factura Descuento: "+f.getNumero());
 		}
 	}
 
