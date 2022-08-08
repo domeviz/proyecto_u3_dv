@@ -56,4 +56,20 @@ public class FacturaRepositoryImpl implements IFacturaRepository {
 		return myQuery.getResultList();
 	}
 
+	@Override
+	public List<Factura> buscarFacturaJoinWhere(String tipoDetalle) {
+		// TODO Auto-generated method stub
+		TypedQuery<Factura> myQuery=this.entityManager.createQuery("SELECT f FROM Factura f, Detalle d WHERE f = d.factura AND d.tipo =:tipoDetalle", Factura.class);
+		myQuery.setParameter("tipoDetalle", tipoDetalle);
+		return myQuery.getResultList();
+	}
+
+	@Override
+	public List<Factura> buscarFacturaJoinFetch(String tipoDetalle) {
+		// TODO Auto-generated method stub
+		TypedQuery<Factura> myQuery=this.entityManager.createQuery("SELECT f FROM Factura f JOIN FETCH f.detalles d WHERE d.tipo =:tipoDetalle", Factura.class);
+		myQuery.setParameter("tipoDetalle", tipoDetalle);
+		return myQuery.getResultList();
+	}
+
 }

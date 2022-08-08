@@ -29,6 +29,9 @@ public class Factura {
 	@Column(name = "fact_numero")
 	private String numero;
 
+	//EAGER: Trae siempre todos los datos
+	//LAZY: Trae bajo demanda los datos, es decir los que necesito
+	//LAZY: Para usarlo debo especificar en el metodo los valores que necesito
 	@OneToMany(mappedBy = "factura", fetch = FetchType.EAGER)
 	private List<Detalle> detalles;
 
