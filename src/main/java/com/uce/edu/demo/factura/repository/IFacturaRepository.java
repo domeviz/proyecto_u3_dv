@@ -13,4 +13,10 @@ public interface IFacturaRepository {
 	public List<Factura> buscarFacturaOuterRightJoin(String tipoDetalle);
 	public List<Factura> buscarFacturaJoinWhere(String tipoDetalle);
 	public List<Factura> buscarFacturaJoinFetch(String tipoDetalle);
+	
+	//CRUD
+	public Factura consultar(Integer id);
+	public void create(Factura f);
+	public void update(Factura f);
+	public void delete(Integer id);
 }

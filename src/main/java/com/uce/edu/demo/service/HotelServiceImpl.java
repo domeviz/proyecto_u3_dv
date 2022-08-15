@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.repository.IHotelRepository;
+import com.uce.edu.demo.repository.modelo.ContadorHabitaciones;
 import com.uce.edu.demo.repository.modelo.Hotel;
 
 @Service
@@ -55,5 +56,22 @@ public class HotelServiceImpl implements IHotelService{
 		// TODO Auto-generated method stub
 		return this.iHotelRepository.buscarHotelJoinFetch(tipoHabitacion);
 	}
+	
+	@Override
+	public void insertar(Hotel h) {
+		this.iHotelRepository.insertar(h);
+		
+	}
+
+	@Override
+	public Hotel buscarHotel(String tipo) {
+		// TODO Auto-generated method stub
+		return this.iHotelRepository.buscarHotel(tipo);
+	}
+
+	@Override
+    public ContadorHabitaciones contarHabitaciones(Integer id, String tipo) {
+        return this.iHotelRepository.contarHabitaciones(id, tipo);
+    }
 
 }

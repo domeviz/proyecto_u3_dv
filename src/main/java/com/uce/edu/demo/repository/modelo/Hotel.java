@@ -32,13 +32,12 @@ public class Hotel {
 	//fetch = FetchType.LAZY es una carga mas eficiente
 	//LAZY: Trae bajo demanda los datos, es decir los que necesito
 	//LAZY: Cuando necesito los datos
-	@OneToMany(mappedBy="hotel", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="hotel", fetch = FetchType.EAGER)
 	private List<Habitacion> habitaciones;
 	
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", habitaciones=" + habitaciones
-				+ "]";
+		return "Hotel [id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + "]";
 	}
 	
 	//GET Y SET

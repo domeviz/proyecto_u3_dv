@@ -1,11 +1,13 @@
 package com.uce.edu.demo.factura.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uce.edu.demo.factura.repository.IFacturaRepository;
+import com.uce.edu.demo.factura.repository.modelo.Detalle;
 import com.uce.edu.demo.factura.repository.modelo.Factura;
 
 @Service
@@ -54,6 +56,56 @@ public class FacturaServiceImpl implements IFacturaService {
 	public List<Factura> buscarFacturaJoinFetch(String tipoDetalle) {
 		// TODO Auto-generated method stub
 		return this.iFacturaRepository.buscarFacturaJoinFetch(tipoDetalle);
+	}
+	
+	//Trabajo en Grupo
+	@Override
+	public Factura consultar(Integer id) {
+		return this.iFacturaRepository.consultar(id);
+	}
+	
+	@Override
+	public void create(Factura f) {
+		this.iFacturaRepository.create(f);
+	}
+
+	@Override
+	public void update(Factura f) {
+		this.iFacturaRepository.update(f);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		this.iFacturaRepository.delete(id);
+	}
+	
+	@Override
+	public BigDecimal calcularPrecio(Integer id) {
+		Factura f=this.iFacturaRepository.consultar(id);
+		List<Detalle> productos=f.getDetalles();
+		BigDecimal valorFactura=new BigDecimal(0);
+		
+		for(Detalle p: productos) {
+			BigDecimal cantidad=new BigDecimal(p.getCantidad());
+			BigDecimal totalProducto=p.getPrecio().multiply(cantidad);
+			valorFactura=valorFactura.add(totalProducto);
+		}
+		
+		return valorFactura;
+		
+	}
+
+	@Override
+	public int cantidad(Integer id) {
+		Factura f=this.iFacturaRepository.consultar(id);
+		List<Detalle> productos=f.getDetalles();
+		int canasta=0;
+		
+		for(Detalle p: productos) {
+			canasta=canasta+p.getCantidad();
+		}
+		
+		return canasta;
 	}
 	
 }
