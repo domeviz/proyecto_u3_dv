@@ -32,8 +32,8 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		CuentaBancaria cuentaOrigen = this.iCuentaBancariaRepository.buscarPorNumero(NumeroCuentaOrigen);
 		
 		//1. Restar el monto a la cuenta de Origen
-		BigDecimal resto = cuentaOrigen.getSaldo().subtract(monto);
-		cuentaOrigen.setSaldo(resto);
+		BigDecimal saldoOrigen = cuentaOrigen.getSaldo().subtract(monto);
+		cuentaOrigen.setSaldo(saldoOrigen);
 		this.iCuentaBancariaRepository.actualizar(cuentaOrigen);
 		CuentaBancaria cuentaDestino = this.iCuentaBancariaRepository.buscarPorNumero(NumeroCuentaDestino);
 		
@@ -50,6 +50,14 @@ public class TransferenciaServiceImpl implements ITransferenciaService{
 		transferencia.setCuentaDestino(cuentaDestino);
 		
 		this.iTransferenciaRepository.insertar(transferencia);
+		
+//		if(cuentaOrigen.getTipo().equals("Ahorros")) {
+//			throw new RuntimeException();
+//		}	
+		
+		if(monto.compareTo(saldoOrigen)>0) {
+			throw new RuntimeException();
+		}	
 	}//commit
 
 	@Override

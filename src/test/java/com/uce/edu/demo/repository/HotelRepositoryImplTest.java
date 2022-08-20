@@ -18,7 +18,7 @@ class HotelRepositoryImplTest {
 	void testBuscarHotel() {
 		Hotel h=new Hotel();
 		h.setId(6);
-		h.setDireccion("Barcelona");
+		h.setDireccion("Francia");
 		//Barcelona prueba correcta
 		//Francia prueba fallida
 
