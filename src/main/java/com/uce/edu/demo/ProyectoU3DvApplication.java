@@ -26,18 +26,6 @@ public class ProyectoU3DvApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-
-		List<String> productos= new ArrayList<String>();
-		productos.add("333372");
-		productos.add("226637");
-		productos.add("553662");
-		productos.add("748383");
-		productos.add("999333");
-		productos.add("115252");
-
-		this.iGestorComprasService.comprarProductos("123456", "321", productos);
-		
-		LOG.info("Compra realizada");
 	}
 
 }
