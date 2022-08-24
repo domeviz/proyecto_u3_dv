@@ -1,7 +1,7 @@
 package com.uce.edu.demo.service.funcional;
 
 @FunctionalInterface
-public interface IPersonaFunctionUnaryOperator<T> {
+public interface IPersonaFunctionUnaryOperator<T> extends IPersonaFunction<T, T>{
 
-	T apply(T arg1);
+	
 }
