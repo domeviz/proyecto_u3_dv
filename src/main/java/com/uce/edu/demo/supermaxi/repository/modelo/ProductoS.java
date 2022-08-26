@@ -17,21 +17,21 @@ import javax.persistence.Table;
 public class ProductoS {
 	
 	@Id
-	@Column(name="prod_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prod_id_seq")
-	@SequenceGenerator(name = "prod_id_seq", sequenceName = "prod_id_seq", allocationSize = 1)
+	@Column(name="prod_s_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prod_s_id_seq")
+	@SequenceGenerator(name = "prod_s_id_seq", sequenceName = "prod_s_id_seq", allocationSize = 1)
 	private Integer id;
 	
-	@Column(name="prod_nombre")
+	@Column(name="prod_s_nombre")
 	private String nombre;
 	
-	@Column(name="prod_precio")
+	@Column(name="prod_s_precio")
 	private BigDecimal precio;
 	
-	@Column(name="prod_stock")
+	@Column(name="prod_s_stock")
 	private Integer stock;
 	
-	@Column(name="prod_codigo_barras")
+	@Column(name="prod_s_codigo_barras")
 	private String codigoBarras;
 	
 	@OneToMany(mappedBy = "producto")
@@ -39,7 +39,7 @@ public class ProductoS {
 
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock
+		return "ProductoS [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", stock=" + stock
 				+ ", codigoBarras=" + codigoBarras + "]";
 	}
 

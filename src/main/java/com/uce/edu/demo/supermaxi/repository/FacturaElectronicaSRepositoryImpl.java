@@ -7,11 +7,11 @@ import javax.transaction.Transactional.TxType;
 
 import org.springframework.stereotype.Repository;
 
-import com.uce.edu.demo.supermaxi.repository.modelo.FacturaS;
+import com.uce.edu.demo.supermaxi.repository.modelo.FacturaElectronicaS;
 
 @Repository
 @Transactional
-public class FacturaSRepositoryImpl implements IFacturaSRepository {
+public class FacturaElectronicaSRepositoryImpl implements IFacturaElectronicaSRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -19,14 +19,9 @@ public class FacturaSRepositoryImpl implements IFacturaSRepository {
 	@Override
 	//EN REPOSITORY LA NOTACION DE LOS MÉTODOS DE LA TRANSACCION SIEMPRE ES MANDATORY
 	@Transactional(value = TxType.MANDATORY)
-	public void crear(FacturaS f) {
+	public void insertar(FacturaElectronicaS f) {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(f);
 	}
-
-	@Override
-	public void actualizar(FacturaS f) {
-		// TODO Auto-generated method stub
-		this.entityManager.merge(f);
-	}
+	
 }

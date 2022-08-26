@@ -16,15 +16,15 @@ import javax.persistence.Table;
 public class ClienteS {
 
 	@Id
-	@Column(name = "clie_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clie_id_seq")
-	@SequenceGenerator(name = "clie_id_seq", sequenceName = "clie_id_seq", allocationSize = 1)
+	@Column(name = "clie_s_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "clie_s_id_seq")
+	@SequenceGenerator(name = "clie_s_id_seq", sequenceName = "clie_s_id_seq", allocationSize = 1)
 	private Integer id;
 
-	@Column(name = "clie_cedula")
+	@Column(name = "clie_s_cedula")
 	private String cedula;
 
-	@Column(name = "clie_numero_tarjeta")
+	@Column(name = "clie_s_numero_tarjeta")
 	private String numeroTarjeta;
 
 	@OneToMany(mappedBy = "cliente")
@@ -32,7 +32,7 @@ public class ClienteS {
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", cedula=" + cedula + ", numeroTarjeta=" + numeroTarjeta + "]";
+		return "ClienteS [id=" + id + ", cedula=" + cedula + ", numeroTarjeta=" + numeroTarjeta + "]";
 	}
 
 	// SET Y GET

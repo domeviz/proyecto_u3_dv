@@ -12,34 +12,31 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "factura_electronica_S")
+@Table(name = "factura_electronica_s")
 public class FacturaElectronicaS {
 
 	@Id
-	@Column(name = "faec_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "faec_id_seq")
-	@SequenceGenerator(name = "faec_id_seq", sequenceName = "faec_id_seq", allocationSize = 1)
+	@Column(name = "fael_s_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fael_s_id_seq")
+	@SequenceGenerator(name = "fael_s_id_seq", sequenceName = "fael_s_id_seq", allocationSize = 1)
 	private Integer id;
 
-	@Column(name = "faec_numero_factura")
+	@Column(name = "fael_s_numero_factura")
 	private String numeroFactura;
 	
-	@Column(name = "faec_fecha")
+	@Column(name = "fael_s_fecha")
 	private LocalDateTime fecha;
 	
-	@Column(name = "faec_monto")
+	@Column(name = "fael_s_monto")
 	private BigDecimal monto;
-
-	@Column(name = "faec_codigo")
-	private String codigo;
 	
-	@Column(name = "faec_numero_items")
+	@Column(name = "fael_s_numero_items")
 	private Integer numeroItems;
 
 	@Override
 	public String toString() {
-		return "FacturaElectronica [id=" + id + ", numeroFactura=" + numeroFactura + ", fecha=" + fecha + ", monto="
-				+ monto + ", codigo=" + codigo + ", numeroItems=" + numeroItems + "]";
+		return "FacturaElectronicaS [id=" + id + ", numeroFactura=" + numeroFactura + ", fecha=" + fecha + ", monto="
+				+ monto + ", numeroItems=" + numeroItems + "]";
 	}
 
 	// SET Y GET
@@ -73,14 +70,6 @@ public class FacturaElectronicaS {
 
 	public void setMonto(BigDecimal monto) {
 		this.monto = monto;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 
 	public Integer getNumeroItems() {

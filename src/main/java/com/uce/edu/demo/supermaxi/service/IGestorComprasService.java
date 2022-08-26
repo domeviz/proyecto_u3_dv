@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface IGestorComprasService {
 
-	public void comprarProductos(String cedula, String numeroFactura, List<String> codigos);
+	public void comprarProductos(String cedula, String numeroFactura, List<String> listaCodigos);
 	
 }

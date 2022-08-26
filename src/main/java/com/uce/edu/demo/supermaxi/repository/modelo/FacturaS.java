@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,30 +21,30 @@ import javax.persistence.Table;
 public class FacturaS {
 
 	@Id
-	@Column(name = "fact_id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fact_id_seq")
-	@SequenceGenerator(name = "fact_id_seq", sequenceName = "fact_id_seq", allocationSize = 1)
+	@Column(name = "fact_s_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "fact_s_id_seq")
+	@SequenceGenerator(name = "fact_s_id_seq", sequenceName = "fact_s_id_seq", allocationSize = 1)
 	private Integer id;
 
-	@Column(name = "fact_fecha")
+	@Column(name = "fact_s_fecha")
 	private LocalDateTime fecha;
 
-	@Column(name = "fact_numero")
+	@Column(name = "fact_s_numero")
 	private String numero;
 	
-	@Column(name="fact_total")
+	@Column(name="fact_s_total")
 	private BigDecimal total;
 
 	@ManyToOne
-	@JoinColumn(name = "fact_clie_id")
+	@JoinColumn(name = "fact_s_clie_id")
 	private ClienteS cliente;
 
-	@OneToMany(mappedBy = "factura", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "factura", cascade=CascadeType.ALL)
 	private List<DetalleFacturaS> detalles;
 
 	@Override
 	public String toString() {
-		return "Factura [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", total=" + total + ", cliente="
+		return "FacturaS [id=" + id + ", fecha=" + fecha + ", numero=" + numero + ", total=" + total + ", cliente="
 				+ cliente + ", detalles=" + detalles + "]";
 	}
 
